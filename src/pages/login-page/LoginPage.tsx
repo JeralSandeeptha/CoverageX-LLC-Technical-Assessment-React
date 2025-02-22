@@ -9,7 +9,6 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import CheckIcon from '@mui/icons-material/Check';
-import { Helmet } from 'react-helmet';
 
 const LoginPage = () => {
 
@@ -41,21 +40,6 @@ const LoginPage = () => {
   return (
 
     <div className='login' data-testid="login">
-
-      <Helmet>
-          <title>Login - IruSri Products</title>
-          <meta
-              name="description"
-              content="Log in to your account on IruSri Products to purchase your products and stay productive. Access all features by signing in securely."
-          />
-          <meta name="robots" content="noindex, follow" />
-          <meta property="og:title" content="Login - IruSri Assignment" />
-          <meta
-              property="og:description"
-              content="Log in to your IruSri Products account and manage your tasks efficiently. Secure access to all features."
-          />
-          <meta property="og:type" content="website" />
-      </Helmet>
       
       <div className="login-left">
 

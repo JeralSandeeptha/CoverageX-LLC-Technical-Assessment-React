@@ -23,7 +23,7 @@ const NotFoundPage = () => {
             content="The page you're looking for might have been removed, had its name changed, or is temporarily unavailable."
         />
         <meta name="robots" content="noindex, follow" />
-        <meta property="og:title" content="Page Not Found - IruSri Assignment" />
+        <meta property="og:title" content="Page Not Found - CoverageX Assignment" />
         <meta
             property="og:description"
             content="We couldn't find the page you were looking for. Explore our homepage or use the search bar to find what you need."

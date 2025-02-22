@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { Helmet } from 'react-helmet';
 
 const RegisterPage = () => {
 
@@ -42,21 +41,6 @@ const RegisterPage = () => {
 
   return (
     <div className="register">
-
-      <Helmet>
-        <title>Explore products - IruSri Products</title>
-        <meta
-            name="description"
-            content="Create a new account on IruSri Products to purchase your products and explore our new products. Access all features by signing in securely."
-        />
-        <meta name="robots" content="noindex, follow" />
-        <meta property="og:title" content="Explore Products - IruSri Products" />
-        <meta
-            property="og:description"
-            content="Create a new account in to your IruSri Products account and manage your tasks efficiently. Secure access to all features."
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
       
       <div className="register-left">
         <div className="register-content">
