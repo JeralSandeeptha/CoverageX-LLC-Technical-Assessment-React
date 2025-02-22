@@ -1,0 +1,63 @@
+@import '../../styles/all';
+
+.not-found {
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('https://img.freepik.com/premium-photo/abstract-blur-modern-background-with-light-effect-depth-field_558873-1287.jpg?w=1060');
+    // background-image: url('https://img.freepik.com/premium-photo/colorful-background-with-yellow-orange-colored-light_558873-23541.jpg?w=900');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: $primary-font;
+    padding: 0 10%;
+
+    @media screen and (max-width: $mobile) {
+        background-image: unset;
+    }
+
+    .not-found-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        max-width: $max-width;
+        min-height: 100vh;
+        margin: 0 auto;
+        gap: 20px;
+
+        @media screen and (max-width: $laptops) {
+            gap: 0;
+        }
+
+        .badge {
+            padding: 10px 20px;
+            background-color: rgb(236, 224, 227);
+            border-radius: $border-radius;
+
+            .error-text {
+                color: red;
+            }
+        }
+
+        .header {
+            font-size: 60px;
+            font-weight: bold;
+            color: $black;
+            text-align: center;
+
+            @media screen and (max-width: $mobile-portrait) {
+                font-size: 40px;
+            }
+        }
+
+        .subheader {
+            color: $gray;
+            margin-bottom: 20px;
+            text-align: center;
+        }   
+
+        .control-button {
+            padding: 1% 10%;
+        }
+    }
+}
