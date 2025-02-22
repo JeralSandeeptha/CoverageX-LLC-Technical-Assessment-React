@@ -5,36 +5,47 @@ import cartLogo from '../../assets/svgs/approved.png';
 import { getCurrentYear } from '../../utils/getCurrentYear';
 import curlyarrow from '../../assets/svgs/curl-arrow.png';
 import logo from '../../assets/icons/pfizer.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
+import registerUser from '../../services/user-service/registerUser.ts/registerUser';
+import { HandleRegisterFunctionProps } from '../../types/functions.types';
 
 const RegisterPage = () => {
+
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   
   const yupValidationSchema = Yup.object({
-    firstName: Yup.string().required('First Name is required'),
-    lastName: Yup.string().required('Last Name is required'),
     email: Yup.string().email('Invalid email format').required('Email is required'),
     password: Yup.string()
       .min(3, 'Password must be at least 3 characters')
       .required('Password is required'),
   });
 
+  const handleLogin = (values: HandleRegisterFunctionProps) => {
+    registerUser({
+      navigate: navigate,
+      setIsError: setIsError,
+      setIsLoading: setIsLoading,
+      setIsSuccess: setIsSuccess,
+      user: values
+    });
+  }
+
   const formik = useFormik({
     initialValues: {
-      firstName: '',
-      lastName: '',
       email: '',
       password: '',
     },
     validationSchema: yupValidationSchema,
     onSubmit: async (values) => {
       console.log(values);
+      handleLogin(values);
       formik.resetForm();
     },
   });
@@ -78,40 +89,6 @@ const RegisterPage = () => {
           </div>
 
           <form onSubmit={formik.handleSubmit} className="form">
-            <div className="text-input-container">
-              <div className="error">
-                <h6 className="error-texts">
-                  {formik.touched.firstName && formik.errors.firstName}
-                </h6>
-              </div>
-              <TextField
-                label="First Name"
-                id="outlined-size-small"
-                size="small"
-                className="text-field"
-                name="firstName"
-                value={formik.values.firstName}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-            </div>
-            <div className="text-input-container">
-              <div className="error">
-                <h6 className="error-texts">
-                  {formik.touched.lastName && formik.errors.lastName}
-                </h6>
-              </div>
-              <TextField
-                label="Last Name"
-                id="outlined-size-small"
-                size="small"
-                className="text-field"
-                name="lastName"
-                value={formik.values.lastName}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-              />
-            </div>
             <div className="text-input-container">
               <div className="error">
                 <h6 className="error-texts">
@@ -182,10 +159,9 @@ const RegisterPage = () => {
         <div className="logo-container">
           <img src={cartLogo} alt="logo-img" className="logo-img" />
         </div>
-        <h2 className="right-header">Purchase thousands of products</h2>
+        <h2 className="right-header">Manage thousands of your tasks</h2>
         <h5 className="right-para">
-          Join our platform to purchase thousands of highly valuable products in
-          minutes.
+        Join our platform to manage thousands of your tasks valuable for every minute.
         </h5>
         <div className="right-users">
           <AvatarGroup max={4}>

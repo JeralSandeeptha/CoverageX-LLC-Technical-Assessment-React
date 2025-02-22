@@ -63,6 +63,8 @@
           font-family: $primary-font;
           color: $gray;
           margin-bottom: 20px;
+          font-weight: 500;
+          font-size: 20px;
         }
       }
 
@@ -114,6 +116,7 @@
             .error-texts {
               color: red;
               font-size: 10px;
+              font-family: $primary-font;
             }
           }
         }
@@ -139,6 +142,7 @@
         .link {
           color: $gray;
           font-family: $third-font;
+          font-weight: normal;
 
           @media screen and (max-width: $tablet) {
             font-size: 13px;
@@ -155,6 +159,7 @@
         .link {
           color: $gray;
           font-family: $third-font;
+          font-weight: normal;
 
           @media screen and (max-width: $tablet) {
             font-size: 13px;

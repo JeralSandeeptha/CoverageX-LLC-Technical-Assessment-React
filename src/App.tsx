@@ -1,10 +1,13 @@
 import './App.css';
+import AuthProvider from './context/authContext';
 import MainNavigation from './routes/MainNavigation';
 
 function App() {
 
   return (
-    <MainNavigation />
+    <AuthProvider>
+      <MainNavigation />
+    </AuthProvider>
   )
 }
 

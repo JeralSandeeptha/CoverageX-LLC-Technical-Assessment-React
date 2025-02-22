@@ -9,10 +9,16 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import CheckIcon from '@mui/icons-material/Check';
+import loginUser from '../../services/user-service/loginUser/loginUser';
+import { HandleLoginFunctionProps } from '../../types/functions.types';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import useAuthContext from '../../hooks/useAuthContext';
 
 const LoginPage = () => {
 
   const navigate = useNavigate();
+  const { setLocalStorageItem } = useLocalStorage();
+  const { setToken } = useAuthContext();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -25,6 +31,18 @@ const LoginPage = () => {
       .required('Password is required'),
   });
 
+  const handleLogin = (values: HandleLoginFunctionProps) => {
+    loginUser({
+      navigate: navigate,
+      setIsError: setIsError,
+      setIsLoading: setIsLoading,
+      setIsSuccess: setIsSuccess,
+      user: values,
+      setLocalStorageItem: setLocalStorageItem,
+      setToken: setToken
+    });
+  }
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -33,6 +51,7 @@ const LoginPage = () => {
     validationSchema: yupValidationSchema,
     onSubmit: async (values) => {
       console.log(values);
+      handleLogin(values);
       formik.resetForm();
     },
   });
@@ -139,8 +158,8 @@ const LoginPage = () => {
         <div className="logo-container">
           <img src={cartLogo} alt="logo-img" className="logo-img" data-testid="logoimg"/>
         </div>
-        <h2 className="right-header" data-testid="mainHeader">Purchase thousands of products</h2>
-        <h5 className="right-para" data-testid="mainHeader">Join our platform to purchase thousands of highly valuable products in minutes.</h5>
+        <h2 className="right-header" data-testid="mainHeader">Manage thousands of your tasks</h2>
+        <h5 className="right-para" data-testid="mainHeader">Join our platform to manage thousands of your tasks valuable for every minute.</h5>
         <div className="right-users">
           <AvatarGroup max={4} data-testid="avatarGroup">
             <Avatar alt="Remy Sharp" src="https://plus.unsplash.com/premium_photo-1689606093808-3cb4393248d2?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
