@@ -24,6 +24,8 @@ export type HandleLoginFunctionProps = { email: string, password: string };
 
 export type HandleRegisterFunctionProps = { email: string, password: string };
 
+export type HandleAddFormFunctionProps = { title: string, description: string };
+
 export type AuthProviderProps = {
     children: React.ReactNode
 }

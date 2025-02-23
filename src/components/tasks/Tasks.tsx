@@ -2,12 +2,19 @@ import { Button, Tooltip } from '@mui/material';
 import './Tasks.scss';
 import { TasksComponentProps } from '../../types/component.types';
 import Task from '../task/Task';
+import AddForm from '../add-form/AddForm';
 
 const Tasks = (props: TasksComponentProps) => {
+
+  
 
   return (
     <div className='tasks'>
       <div className="task-inner">
+
+        {
+          props.isFormOpen && <AddForm handleVisibleForm={props.handleVisibleForm}/>
+        }
 
         <div className="task-header-content">
           <div className='task-left'>
@@ -15,7 +22,7 @@ const Tasks = (props: TasksComponentProps) => {
           </div>
           <div className='task-right'>
             <Tooltip title="Add New Task" data-testid='tooltip-add-btn-two'>
-              <Button data-testid='add-new-btn' type="submit" variant="contained" size="small" className='control-button'>+ Add Task</Button>
+              <Button onClick={props.handleVisibleForm} data-testid='add-new-btn' type="submit" variant="contained" size="small" className='control-button'>+ Add Task</Button>
             </Tooltip>
           </div>
         </div>

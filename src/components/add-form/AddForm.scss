@@ -1,0 +1,98 @@
+@import '../../styles/all';
+
+.add-form-bg {
+    width: 100%;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.626);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: $mobile) {
+        padding: 20px;
+    }
+
+    .icon-container {
+        width: 40px;
+        height: 40px;
+        background-color: $white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid gray;
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        right: 30px;
+
+        @media screen and (max-width: $mobile) {
+            right: 20px;
+        }
+
+        .icon {
+            width: 15px;
+        }
+    }
+
+    .add-form {
+        max-width: 500px;
+        width: 500px;
+        background-color: $white;
+        border-radius: $border-radius;
+        padding: 20px;
+        display: flex;  
+        align-items: center;
+        flex-direction: column;
+
+        @media screen and (max-width: $mobile) {
+
+        }
+
+        .add-form-title {
+            font-family: $primary-font;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .control-button {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .inputs-container {
+            width: 100%;
+
+            .text-input-container {
+                width: 100%;
+
+                .text-field {
+                  width: 100%;
+                  margin-bottom: 10px;
+                  display: flex;
+                  flex-direction: column;
+      
+                  &::placeholder {
+                    font-family: $primary-font;
+                  }
+                }
+      
+                .error {
+                  width: 100%;
+      
+                  .error-texts {
+                    margin-bottom: 5px;
+                    color: red;
+                    font-size: 10px;
+                    font-family: $primary-font;
+                  }
+                }
+            }
+        }
+    }
+}

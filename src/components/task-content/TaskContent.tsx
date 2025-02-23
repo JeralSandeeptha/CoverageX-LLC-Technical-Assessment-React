@@ -18,8 +18,20 @@ const TaskContent = () => {
         { id: "10", title: "Task 10", description: "Monitor performance", userId: "110", crated_at: "2024-07-18T19:00:00Z" }
     ]);
 
+    const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
+
+    const handleVisibleForm = () => {
+        setIsFormOpen(!isFormOpen);
+    }
+
     return (
-        <Tasks tasks={tasks} setTasks={setTasks}/>
+        <Tasks 
+            tasks={tasks} 
+            setTasks={setTasks}
+            isFormOpen={isFormOpen}
+            setIsFormOpen={setIsFormOpen}
+            handleVisibleForm={handleVisibleForm}
+        />
     );
 
 }
