@@ -1,5 +1,5 @@
-import { Dispatch, JSX, SetStateAction } from "react";
-import { IToken } from "./interfaces.types";
+import React, { Dispatch, JSX, SetStateAction } from "react";
+import { ITask, IToken } from "./interfaces.types";
 
 export type AuthContextType = {
     token: IToken | null;
@@ -13,3 +13,12 @@ export type PrivateRouteProps = {
 export type PublicRouteProps = {
     element: JSX.Element;
 };
+
+export type TaskComponentProps = {
+    children: React.ReactNode
+}
+
+export type TasksComponentProps = {
+    setTasks: Dispatch<SetStateAction<ITask[]>>,
+    tasks: ITask[]
+}

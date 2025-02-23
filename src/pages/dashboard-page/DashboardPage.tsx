@@ -1,11 +1,16 @@
+import Header from '../../components/header/Header';
+import Navbar from '../../components/navbar/Navbar';
+import TaskContent from '../../components/task-content/TaskContent';
 import './DashboardPage.scss';
 
 const DashboardPage = () => {
 
   return (
-    <div>
-      <h1>ajsdjasd</h1>
-    </div>
+    <>
+     <Navbar />
+     <Header />
+     <TaskContent /> 
+    </>
   );
 
 }
