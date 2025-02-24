@@ -24,6 +24,8 @@ export type TasksComponentProps = {
     isFormOpen: boolean,
     setIsFormOpen: Dispatch<SetStateAction<boolean>>
     handleVisibleForm: () => void
+    randomColor: string,
+    getRandomColor: () => string
 }
 
 export type AddFormComponentProps = {

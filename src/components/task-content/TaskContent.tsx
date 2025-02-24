@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Tasks from '../tasks/Tasks';
 import './TaskContent.scss';
 import { ITask } from '../../types/interfaces.types';
+import useRandomColor from '../../hooks/useRandomColor';
 
 const TaskContent = () => {
 
@@ -20,6 +21,8 @@ const TaskContent = () => {
 
     const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
 
+    const { randomColor, getRandomColor } = useRandomColor(); 
+
     const handleVisibleForm = () => {
         setIsFormOpen(!isFormOpen);
     }
@@ -31,6 +34,8 @@ const TaskContent = () => {
             isFormOpen={isFormOpen}
             setIsFormOpen={setIsFormOpen}
             handleVisibleForm={handleVisibleForm}
+            randomColor={randomColor}
+            getRandomColor={getRandomColor}
         />
     );
 

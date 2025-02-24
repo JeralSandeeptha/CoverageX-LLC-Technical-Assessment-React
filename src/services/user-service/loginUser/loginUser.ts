@@ -10,6 +10,7 @@ const loginUser = async (props: LoginUserFunctionProps) => {
                 console.log(res.data.data);
                 props.setIsSuccess(true);
                 props.setLocalStorageItem('accessToken', res.data.data.accessToken);
+                props.setLocalStorageItem('user', res.data.data.user);
                 setTimeout(() => {
                     props.setToken(res.data.data.accessToken);
                 }, 5000);

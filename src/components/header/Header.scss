@@ -35,18 +35,27 @@
                 border-radius: 0.5rem;
                 padding: 20px;
                 color: $white;
+                justify-content: space-between;
          
-            .left-header {
-                font-weight: bold;
-
-                @media screen and (max-width: $mobile) {
-                    font-size: 30px;
+            .upper {
+                .left-header {
+                    font-weight: bold;
+    
+                    @media screen and (max-width: $mobile) {
+                        font-size: 30px;
+                    }
+                }
+    
+                .left-subheader {
+                    color: $gray;
+                    font-weight: normal;
                 }
             }
 
-            .left-subheader {
-                color: $gray;
-                font-weight: normal;
+            .lower {
+                h5 {
+                    font-weight: normal;
+                }
             }
         }
 

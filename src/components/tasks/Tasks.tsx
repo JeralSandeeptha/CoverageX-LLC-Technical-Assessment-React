@@ -6,7 +6,7 @@ import AddForm from '../add-form/AddForm';
 
 const Tasks = (props: TasksComponentProps) => {
 
-  
+  console.log(props.randomColor);
 
   return (
     <div className='tasks'>
@@ -37,7 +37,7 @@ const Tasks = (props: TasksComponentProps) => {
                   props.tasks.map((task) => {
                     return (
                       <Task>
-                        <div className='single-task'>
+                        <div className='single-task' style={{ backgroundColor: props.getRandomColor() }}>
                           <div className="task-content">
                             <Task.Title>{ task.title }</Task.Title>
                             <Task.Description>{ task.description }</Task.Description>

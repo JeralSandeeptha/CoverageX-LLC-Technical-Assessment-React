@@ -29,3 +29,19 @@ export type HandleAddFormFunctionProps = { title: string, description: string };
 export type AuthProviderProps = {
     children: React.ReactNode
 }
+
+export type AddTodoFunctionProps = {
+    userId: string,
+    token: string,
+    title: string,
+    description: string,
+    setIsError: Dispatch<SetStateAction<boolean>>,
+    setIsLoading: Dispatch<SetStateAction<boolean>>,
+    setIsSuccess: Dispatch<SetStateAction<boolean>>,
+    handleVisibleForm: () => void
+}
+
+export type GetUserFunctionProps = {
+    userId: string,
+    token: string
+}

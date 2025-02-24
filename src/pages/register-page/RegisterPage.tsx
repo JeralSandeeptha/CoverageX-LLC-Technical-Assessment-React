@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import registerUser from '../../services/user-service/registerUser.ts/registerUser';
+import registerUser from '../../services/user-service/registerUser/registerUser';
 import { HandleRegisterFunctionProps } from '../../types/functions.types';
 
 const RegisterPage = () => {
