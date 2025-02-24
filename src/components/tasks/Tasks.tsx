@@ -30,7 +30,7 @@ const Tasks = (props: TasksComponentProps) => {
         <div className="tasks-show-container">
           {
             props.tasks.length === 0 ? (
-              <h4 className='no-content-text'>Currently you don't have any tasks.</h4>
+              <h4 className='no-content-text'>Hooray! Currently you don't have any tasks.</h4>
             ) : (
               <div className="tasks-mapping">
                 {

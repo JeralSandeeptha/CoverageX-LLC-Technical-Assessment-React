@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from "react"
-import { AuthRequest, IToken } from "./interfaces.types"
+import { AuthRequest, ITask, IToken } from "./interfaces.types"
 import { NavigateFunction } from "react-router-dom"
 
 export type RegisterUserFunctionProps = {
@@ -43,5 +43,11 @@ export type AddTodoFunctionProps = {
 
 export type GetUserFunctionProps = {
     userId: string,
+    token: string
+}
+
+export type GetTasksByUserIdFunctionProps = {
+    userId: string,
+    setTasks: Dispatch<SetStateAction<ITask[]>>,
     token: string
 }
