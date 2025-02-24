@@ -6,7 +6,7 @@ import AddForm from '../add-form/AddForm';
 
 const Tasks = (props: TasksComponentProps) => {
 
-  console.log(props.randomColor);
+  console.log("Pedning Tasks" + props.filterTasks);
 
   return (
     <div className='tasks'>
@@ -29,12 +29,12 @@ const Tasks = (props: TasksComponentProps) => {
 
         <div className="tasks-show-container">
           {
-            props.tasks.length === 0 ? (
+            props.filterTasks.length === 0 ? (
               <h4 className='no-content-text'>Hooray! Currently you don't have any tasks.</h4>
             ) : (
               <div className="tasks-mapping">
                 {
-                  props.tasks.map((task) => {
+                  props.filterTasks.map((task) => {
                     return (
                       <Task>
                         <div className='single-task' style={{ backgroundColor: props.getRandomColor() }}>

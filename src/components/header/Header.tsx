@@ -1,16 +1,38 @@
 import { useEffect, useState } from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import './Header.scss';
-import { IUser } from '../../types/interfaces.types';
+import { ITask, IUser } from '../../types/interfaces.types';
+import getTasksByUserId from '../../services/todo-service/getTasksByUserId/getTasksByUserId';
 
 const Header = () => {
 
   const { getLocalStorageItem } = useLocalStorage();
   const [user, setUser] = useState<IUser>();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [tasks, setTasks] = useState<ITask[]>([]);
+
+  const filterCompletedTasks = () => {
+    const completedTasks = tasks.filter((task) => {
+      return task.iscompleted === true;
+    });
+    return completedTasks.length;
+  }
+  const filterPendingTasks = () => {
+    const pendingTasks = tasks.filter((task) => {
+      return task.iscompleted === false;
+    });
+    return pendingTasks.length;
+  }
 
   useEffect(() => {
     const user = getLocalStorageItem('user');
     setUser(user);
+    getTasksByUserId({
+      userId: getLocalStorageItem('user').id,
+      setTasks: setTasks,
+      token: getLocalStorageItem('accessToken')
+    });
+    // filterCompletedTasks();
   }, []);
 
   return (
@@ -30,17 +52,17 @@ const Header = () => {
             <div className="pending container">
                 <h3 className='task-header'>Pending Tasks</h3>
                 <div className='task-container'>
-                    <h1 className='active'>15</h1>
+                    <h1 className='active'>{ filterPendingTasks() }</h1>
                     <h1 className='slash'>/</h1>
-                    <h1 className='all'>25</h1>
+                    <h1 className='all'>{tasks.length}</h1>
                 </div>
             </div>
             <div className="completed container">
                 <h3 className='task-header'>Completed Tasks</h3>
                 <div className='task-container'>
-                    <h1 className='active'>10</h1>
+                    <h1 className='active'>{ filterCompletedTasks() }</h1>
                     <h1 className='slash'>/</h1>
-                    <h1 className='all'>25</h1>
+                    <h1 className='all'>{tasks.length}</h1>
                 </div>
             </div>
         </div>

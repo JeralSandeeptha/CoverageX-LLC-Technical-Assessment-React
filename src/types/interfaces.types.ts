@@ -12,6 +12,7 @@ export interface ITask{
     title: string,
     description: string,
     userId?: string,
+    iscompleted: boolean,
     crated_at?: string,
 }
 

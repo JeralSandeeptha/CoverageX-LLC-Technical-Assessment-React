@@ -21,6 +21,7 @@ export type TaskComponentProps = {
 export type TasksComponentProps = {
     setTasks: Dispatch<SetStateAction<ITask[]>>,
     tasks: ITask[],
+    filterTasks: ITask[],
     isFormOpen: boolean,
     setIsFormOpen: Dispatch<SetStateAction<boolean>>
     handleVisibleForm: () => void

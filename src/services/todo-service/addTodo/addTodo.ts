@@ -21,10 +21,11 @@ const addTodo = async (props: AddTodoFunctionProps) => {
                     props.setIsSuccess(false);
                     props.setIsLoading(false);
                     props.handleVisibleForm();
-                }, 5000);
+                }, 3000);
             })
             .catch((error) => {
                 console.log(error);
+                props.setIsLoading(false);
                 if(error.status === 403) {
                     AxiosClient.get(`${baseURL}/auth/refresh-token`)
                         .then((res) => {
