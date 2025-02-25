@@ -3,10 +3,14 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import './Header.scss';
 import { ITask, IUser } from '../../types/interfaces.types';
 import getTasksByUserId from '../../services/todo-service/getTasksByUserId/getTasksByUserId';
+import { useNavigate } from 'react-router-dom';
+import useAuthContext from '../../hooks/useAuthContext';
 
 const Header = () => {
 
-  const { getLocalStorageItem } = useLocalStorage();
+  const { setToken } = useAuthContext();
+  const navigate = useNavigate();
+  const { getLocalStorageItem, clearLocalStorageItem, setLocalStorageItem } = useLocalStorage();
   const [user, setUser] = useState<IUser>();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [tasks, setTasks] = useState<ITask[]>([]);
@@ -30,7 +34,12 @@ const Header = () => {
     getTasksByUserId({
       userId: getLocalStorageItem('user').id,
       setTasks: setTasks,
-      token: getLocalStorageItem('accessToken')
+      token: getLocalStorageItem('accessToken'),
+      clearLocalStorageItem: clearLocalStorageItem,
+      getLocalStorageItem: getLocalStorageItem,
+      navigate: navigate,
+      setToken: setToken,
+      setLocalStorageItem: setLocalStorageItem
     });
     // filterCompletedTasks();
   }, []);

@@ -5,6 +5,7 @@ import logout from '../../assets/icons/exit.png';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import { useNavigate } from 'react-router-dom';
 import useAuthContext from '../../hooks/useAuthContext';
+import logoutUser from '../../services/user-service/logoutUser/logoutUser';
 
 const Navbar = () => {
 
@@ -15,12 +16,12 @@ const Navbar = () => {
     const logOutUser = () => {
         const isConfirmed = window.confirm('Are you sure want to logout?');
         if(isConfirmed) {
+            logoutUser();
             clearLocalStorageItem('user');
             clearLocalStorageItem('accessToken');
             setToken(null);
             navigate('/');
         }
-        return null;
     }
 
     return (

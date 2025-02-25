@@ -5,14 +5,18 @@ import { ITask } from '../../types/interfaces.types';
 import useRandomColor from '../../hooks/useRandomColor';
 import getTasksByUserId from '../../services/todo-service/getTasksByUserId/getTasksByUserId';
 import useLocalStorage from '../../hooks/useLocalStorage';
+import useAuthContext from '../../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const TaskContent = () => {
 
     const [tasks, setTasks] = useState<ITask[]>([]);
     const [filterTasks, setFilterTasks] = useState<ITask[]>([]);
-    const { getLocalStorageItem } = useLocalStorage(); 
+    const { getLocalStorageItem, clearLocalStorageItem, setLocalStorageItem } = useLocalStorage(); 
     const [isFormOpen, setIsFormOpen] = useState<boolean>(false);
     const { randomColor, getRandomColor } = useRandomColor(); 
+    const { setToken } = useAuthContext();
+    const navigate = useNavigate();
 
     const handleVisibleForm = () => {
         setIsFormOpen(!isFormOpen);
@@ -30,7 +34,12 @@ const TaskContent = () => {
         getTasksByUserId({
             userId: getLocalStorageItem('user').id,
             setTasks: setTasks,
-            token: getLocalStorageItem('accessToken')
+            token: getLocalStorageItem('accessToken'),
+            clearLocalStorageItem: clearLocalStorageItem,
+            setLocalStorageItem: setLocalStorageItem,
+            getLocalStorageItem: getLocalStorageItem,
+            navigate: navigate,
+            setToken: setToken
         });
     }
 

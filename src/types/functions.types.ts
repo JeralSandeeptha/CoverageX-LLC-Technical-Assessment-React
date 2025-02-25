@@ -42,7 +42,12 @@ export type AddTodoFunctionProps = {
     setIsLoading: Dispatch<SetStateAction<boolean>>,
     setIsSuccess: Dispatch<SetStateAction<boolean>>,
     handleVisibleForm: () => void,
-    navigate: NavigateFunction
+    navigate: NavigateFunction,
+    logOutUser: () => void,
+    setToken: Dispatch<SetStateAction<IToken | null>>
+    setLocalStorageItem: (itemName: string, itemData: unknown) => void,
+    getLocalStorageItem: (itemName: string) => void,
+    clearLocalStorageItem: (itemName: string) => void
 }
 
 export type GetUserFunctionProps = {
@@ -53,7 +58,12 @@ export type GetUserFunctionProps = {
 export type GetTasksByUserIdFunctionProps = {
     userId: string,
     setTasks: Dispatch<SetStateAction<ITask[]>>,
-    token: string
+    token: string,
+    navigate: NavigateFunction,
+    setToken: Dispatch<SetStateAction<IToken | null>>,
+    setLocalStorageItem: (itemName: string, itemData: unknown) => void,
+    getLocalStorageItem: (itemName: string) => void,
+    clearLocalStorageItem: (itemName: string) => void
 }
 
 export type UpdateTaskFunctionProps = {
@@ -62,5 +72,9 @@ export type UpdateTaskFunctionProps = {
     setIsLoading: Dispatch<SetStateAction<boolean>>,
     setIsSuccess: Dispatch<SetStateAction<boolean>>,
     navigate: NavigateFunction,
-    todoId: string
+    todoId: string,
+    setToken: Dispatch<SetStateAction<IToken | null>>,
+    setLocalStorageItem: (itemName: string, itemData: unknown) => void,
+    getLocalStorageItem: (itemName: string) => void,
+    clearLocalStorageItem: (itemName: string) => void
 }
