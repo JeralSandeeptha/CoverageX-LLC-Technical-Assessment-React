@@ -26,11 +26,11 @@ npm install -g typescript
 
 # Tech Stack
 
-Frontend: React, TypeScript, Vite
-State Management: Context API
-UI Library: Material UI
-HTTP Library: Axios
-Backend Intergration: [Express API](https://github.com/JeralSandeeptha/CoverageX-LLC-Technical-Assessment-Nodejs)
+- Frontend: React, TypeScript, Vite
+- State Management: Context API
+- UI Library: Material UI
+- HTTP Library: Axios
+- Backend Intergration: [Express API](https://github.com/JeralSandeeptha/CoverageX-LLC-Technical-Assessment-Nodejs)
 
 # Environment Variables
 
