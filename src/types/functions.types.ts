@@ -72,5 +72,9 @@ export type UpdateTaskFunctionProps = {
     setIsLoading: Dispatch<SetStateAction<boolean>>,
     setIsSuccess: Dispatch<SetStateAction<boolean>>,
     navigate: NavigateFunction,
-    todoId: string
+    todoId: string,
+    setToken: Dispatch<SetStateAction<IToken | null>>,
+    setLocalStorageItem: (itemName: string, itemData: unknown) => void,
+    getLocalStorageItem: (itemName: string) => void,
+    clearLocalStorageItem: (itemName: string) => void
 }

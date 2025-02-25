@@ -8,15 +8,16 @@
   import { useNavigate } from 'react-router-dom';
   import CheckIcon from '@mui/icons-material/Check';
   import updateTask from '../../services/todo-service/update-task/updateTask';
+import useAuthContext from '../../hooks/useAuthContext';
 
   const Tasks = (props: TasksComponentProps) => {
 
     const navigate = useNavigate();
-    const { getLocalStorageItem } = useLocalStorage();
-
+    const { getLocalStorageItem,clearLocalStorageItem, setLocalStorageItem } = useLocalStorage();
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const { setToken } = useAuthContext();
     
     const handleUpdateTask = (id: string) => {
       const isConfirmed = window.confirm('Are you sure want to complete this task?');
@@ -27,10 +28,13 @@
           setIsSuccess: setIsSuccess,
           navigate: navigate,
           token: getLocalStorageItem('accessToken'),
-          todoId: id
+          todoId: id,
+          clearLocalStorageItem: clearLocalStorageItem,
+          getLocalStorageItem: getLocalStorageItem,
+          setLocalStorageItem: setLocalStorageItem,
+          setToken: setToken
         });
       }
-      return null;
     }
     
     // console.log("Pedning Tasks" + props.filterTasks);
