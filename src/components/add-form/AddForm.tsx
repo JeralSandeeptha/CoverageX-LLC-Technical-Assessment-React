@@ -10,6 +10,7 @@ import addTodo from '../../services/todo-service/addTodo/addTodo';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import CheckIcon from '@mui/icons-material/Check';
 import { useNavigate } from 'react-router-dom';
+import useAuthContext from '../../hooks/useAuthContext';
 
 const AddForm = (props: AddFormComponentProps) => {
 
@@ -17,8 +18,9 @@ const AddForm = (props: AddFormComponentProps) => {
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const navigate = useNavigate();
+  const { setToken } = useAuthContext();
 
-  const { getLocalStorageItem } = useLocalStorage(); 
+  const { getLocalStorageItem, clearLocalStorageItem, setLocalStorageItem } = useLocalStorage(); 
 
   const yupValidationSchema = Yup.object({
       title: Yup.string().min(3, 'Title must be at least 3 characters').required('Title is required'),
@@ -26,6 +28,16 @@ const AddForm = (props: AddFormComponentProps) => {
         .min(6, 'Description must be at least 6 characters')
         .required('Description is required'),
   });
+
+  const logOutUser = () => {
+    const isConfirmed = window.confirm('Are you sure want to logout?');
+    if(isConfirmed) {
+        clearLocalStorageItem('user');
+        clearLocalStorageItem('accessToken');
+        setToken(null);
+        navigate('/');
+    }
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -51,7 +63,12 @@ const AddForm = (props: AddFormComponentProps) => {
       token: getLocalStorageItem('accessToken'),
       userId: getLocalStorageItem('user').id,
       handleVisibleForm: props.handleVisibleForm,
-      navigate: navigate
+      navigate: navigate,
+      logOutUser: logOutUser,
+      setToken: setToken,
+      setLocalStorageItem: setLocalStorageItem,
+      getLocalStorageItem: getLocalStorageItem,
+      clearLocalStorageItem: clearLocalStorageItem
     });
   }
     

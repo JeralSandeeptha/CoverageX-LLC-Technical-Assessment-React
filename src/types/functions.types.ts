@@ -42,7 +42,12 @@ export type AddTodoFunctionProps = {
     setIsLoading: Dispatch<SetStateAction<boolean>>,
     setIsSuccess: Dispatch<SetStateAction<boolean>>,
     handleVisibleForm: () => void,
-    navigate: NavigateFunction
+    navigate: NavigateFunction,
+    logOutUser: () => void,
+    setToken: Dispatch<SetStateAction<IToken | null>>
+    setLocalStorageItem: (itemName: string, itemData: unknown) => void,
+    getLocalStorageItem: (itemName: string) => void,
+    clearLocalStorageItem: (itemName: string) => void
 }
 
 export type GetUserFunctionProps = {
