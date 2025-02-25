@@ -91,7 +91,7 @@ import useAuthContext from '../../hooks/useAuthContext';
                     props.filterTasks.map((task) => {
                       return (
                         <Task>
-                          <div className='single-task' style={{ backgroundColor: props.getRandomColor() }}>
+                          <div className='single-task'>
                             <div className="task-content">
                               <Task.Title>{ task.title }</Task.Title>
                               <Task.Description>{ task.description }</Task.Description>
