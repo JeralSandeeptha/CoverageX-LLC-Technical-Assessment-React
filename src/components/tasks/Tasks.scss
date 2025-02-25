@@ -1,0 +1,86 @@
+@import '../../styles/all';
+
+.tasks {
+    width: 100%;
+    min-height: 20vh;
+
+    @media screen and (max-width: 1250px) {
+        padding: 0 2rem;
+    }
+    @media screen and (max-width: $mobile) {
+        padding: 0 1rem;
+    }
+
+    .task-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+
+        .task-header-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            .task-left {
+            
+                h1 {
+                    color: $black;
+                    font-family: $primary-font;
+
+                    @media screen and (max-width: $mobile-portrait) {
+                        font-size: 25px;                        
+                    }
+                    @media screen and (max-width: $mobile) {
+                        font-size: 20px;                        
+                    }
+                }
+            }
+            
+            .task-right {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+        }
+
+        .tasks-show-container {
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+            .no-content-text {
+                color: $black;
+                font-family: $primary-font;
+                font-weight: normal;
+            }
+
+            .tasks-mapping {
+
+                .single-task {
+                    background-color: rgb(203, 225, 238);  
+                    margin-bottom: 10px;
+                    border-radius: $border-radius;
+                    padding: 20px;
+                    position: relative;
+                    font-family: $primary-font;
+                    max-width: 800px;
+
+                    .task-content {
+                    
+                    }
+    
+                    .button-container {
+                        position: absolute;
+                        top: 20px;
+                        right: 20px;
+
+                        @media screen and (max-width: $mobile-portrait) {
+                            position: relative;
+                            top: 0;
+                            right: 0;
+                            margin-top: 20px;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
