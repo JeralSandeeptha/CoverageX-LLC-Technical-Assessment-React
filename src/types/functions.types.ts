@@ -58,7 +58,12 @@ export type GetUserFunctionProps = {
 export type GetTasksByUserIdFunctionProps = {
     userId: string,
     setTasks: Dispatch<SetStateAction<ITask[]>>,
-    token: string
+    token: string,
+    navigate: NavigateFunction,
+    setToken: Dispatch<SetStateAction<IToken | null>>,
+    setLocalStorageItem: (itemName: string, itemData: unknown) => void,
+    getLocalStorageItem: (itemName: string) => void,
+    clearLocalStorageItem: (itemName: string) => void
 }
 
 export type UpdateTaskFunctionProps = {
