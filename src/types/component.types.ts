@@ -29,6 +29,11 @@ export type TasksComponentProps = {
     getRandomColor: () => string
 }
 
+export type TaskButtonComponentProps = {
+    handleUpdateTask: () => void,
+    children: React.ReactNode
+}
+
 export type AddFormComponentProps = {
     handleVisibleForm: () => void
 }

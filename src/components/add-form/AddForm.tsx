@@ -9,12 +9,14 @@ import logo from '../../assets/icons/cross.png';
 import addTodo from '../../services/todo-service/addTodo/addTodo';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import CheckIcon from '@mui/icons-material/Check';
+import { useNavigate } from 'react-router-dom';
 
 const AddForm = (props: AddFormComponentProps) => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const { getLocalStorageItem } = useLocalStorage(); 
 
@@ -48,7 +50,8 @@ const AddForm = (props: AddFormComponentProps) => {
       description: values.description,
       token: getLocalStorageItem('accessToken'),
       userId: getLocalStorageItem('user').id,
-      handleVisibleForm: props.handleVisibleForm
+      handleVisibleForm: props.handleVisibleForm,
+      navigate: navigate
     });
   }
     

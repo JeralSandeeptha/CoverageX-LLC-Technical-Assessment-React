@@ -21,7 +21,8 @@ const addTodo = async (props: AddTodoFunctionProps) => {
                     props.setIsSuccess(false);
                     props.setIsLoading(false);
                     props.handleVisibleForm();
-                }, 3000);
+                }, 5000);
+                props.navigate(0);
             })
             .catch((error) => {
                 console.log(error);

@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { TaskComponentProps } from '../../types/component.types';
+import { TaskButtonComponentProps, TaskComponentProps } from '../../types/component.types';
 import './Task.scss';
 
 const Task = (props: TaskComponentProps) => {
@@ -24,9 +24,9 @@ export const TaskDescription = (props: TaskComponentProps) => {
     <h5 className="task-description">{ props.children }</h5>
   );
 }
-export const TaskButton = (props: TaskComponentProps) => {
+export const TaskButton = (props: TaskButtonComponentProps) => {
   return (
-    <Button data-testid='task-button' type="submit" variant="contained" size="small" className='control-button'>{ props.children }</Button>
+    <Button onClick={props.handleUpdateTask} data-testid='task-button' type="button" variant="contained" size="small" className='control-button'>{ props.children }</Button>
   );
 }
 export const TaskUser = (props: TaskComponentProps) => {

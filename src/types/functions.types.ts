@@ -24,7 +24,10 @@ export type HandleLoginFunctionProps = { email: string, password: string };
 
 export type HandleRegisterFunctionProps = { email: string, password: string };
 
-export type HandleAddFormFunctionProps = { title: string, description: string };
+export type HandleAddFormFunctionProps = { 
+    title: string, 
+    description: string,
+};
 
 export type AuthProviderProps = {
     children: React.ReactNode
@@ -38,7 +41,8 @@ export type AddTodoFunctionProps = {
     setIsError: Dispatch<SetStateAction<boolean>>,
     setIsLoading: Dispatch<SetStateAction<boolean>>,
     setIsSuccess: Dispatch<SetStateAction<boolean>>,
-    handleVisibleForm: () => void
+    handleVisibleForm: () => void,
+    navigate: NavigateFunction
 }
 
 export type GetUserFunctionProps = {
@@ -50,4 +54,13 @@ export type GetTasksByUserIdFunctionProps = {
     userId: string,
     setTasks: Dispatch<SetStateAction<ITask[]>>,
     token: string
+}
+
+export type UpdateTaskFunctionProps = {
+    token: string,
+    setIsError: Dispatch<SetStateAction<boolean>>,
+    setIsLoading: Dispatch<SetStateAction<boolean>>,
+    setIsSuccess: Dispatch<SetStateAction<boolean>>,
+    navigate: NavigateFunction,
+    todoId: string
 }
