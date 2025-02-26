@@ -8,6 +8,9 @@ This is a task management web application built with React, TypeScript, and Vite
 - [Tech Stack](#tech-stack)
 - [Environment Variables](#environment-variables)
 - [Available Scripts](#available-scripts)
+- [Run Application](#run-application)
+    - [Using Scripts](#using-scripts)
+    - [Using Docker](#using-docker)
 - [Test Application](#test-application)
 - [Contributing](#contributing)
 - [License](#license)
@@ -56,6 +59,26 @@ npm run preview
 Run linting check
 ```dash
 npm run lint
+```
+
+# Run Application
+
+### Using Scripts
+
+```bash
+npm run dev
+```
+
+### Using Docker
+
+- Build the image
+```
+docker build -t jeralsandeeptha/coveragex-react .
+```
+
+- Run the build image
+```bash
+docker run -p 5173:5173 -e VITE_BASE_URL=http://localhost:3000/api/v1 jeralsandeeptha/coveragex-react
 ```
 
 # Test Application
