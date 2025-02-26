@@ -3,7 +3,7 @@
 This is a task management web application built with React, TypeScript, and Vite.
 
 # Table of Contents
-
+ 
 - [Get Started](#get-started)
 - [Tech Stack](#tech-stack)
 - [Environment Variables](#environment-variables)
