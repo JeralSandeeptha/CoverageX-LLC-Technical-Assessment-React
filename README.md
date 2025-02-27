@@ -83,6 +83,10 @@ docker run -p 5173:5173 -e VITE_BASE_URL=http://localhost:3000/api/v1 jeralsande
 
 # Test Application
 
+```bash
+npm run test
+```
+
 # Contributing
 
 Feel free to fork this repository, create a feature branch, and submit a pull request.
