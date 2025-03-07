@@ -45,7 +45,7 @@ const Header = () => {
   }, []);
 
   return (
-    <div className='header-section'>
+    <div className='header-section' data-test-id='header'>
       <div className="header-inner">
         <div className="header-left">
             <div className="upper">
