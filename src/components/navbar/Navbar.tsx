@@ -32,8 +32,8 @@ const Navbar = () => {
                 </div>
                 <div className='auth-btns'>
                     <Tooltip title="Logout" data-testid='tooltip-logout'>
-                        <div className="icon-container" onClick={logOutUser}>
-                            <img src={logout} alt="logout-icon" className="icon" data-testid='logout'/>
+                        <div className="icon-container" onClick={logOutUser} data-testid='logout-btn'>
+                            <img src={logout} alt="logout-icon" className="icon" data-testid='logout-image'/>
                         </div>
                     </Tooltip>
                 </div>
