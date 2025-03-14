@@ -9,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
+import googleIcon from '../../assets/icons/google.png';
 import registerUser from '../../services/user-service/registerUser/registerUser';
 import { HandleRegisterFunctionProps } from '../../types/functions.types';
 
@@ -49,6 +50,10 @@ const RegisterPage = () => {
       formik.resetForm();
     },
   });
+
+  const handleGoogleAuth = () => {
+    console.log('Google Authentication');
+  }
 
   return (
     <div className="register">
@@ -124,7 +129,9 @@ const RegisterPage = () => {
                 onBlur={formik.handleBlur}
               />
             </div>
+            
             <h6 className="instruction-text">Must be at least 3 characters</h6>
+            
             <Button
               variant="contained"
               size="small"
@@ -133,12 +140,21 @@ const RegisterPage = () => {
             >
               Create account
             </Button>
+
+            <hr className='separete-line'/>
+
+            <div className="google-btn" onClick={handleGoogleAuth}>
+              <img src={googleIcon} alt="google-auth-btn" className='google-icon'/>
+              <h5>Sign in with Google</h5>
+            </div>
+
             <h6 className="questionText">
               Been here before?{' '}
               <span>
                 <Link to="/">Login</Link>
               </span>
             </h6>
+
           </form>
         </div>
 
