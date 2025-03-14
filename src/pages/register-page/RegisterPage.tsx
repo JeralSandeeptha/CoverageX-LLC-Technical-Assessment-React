@@ -12,6 +12,8 @@ import { useState } from 'react';
 import googleIcon from '../../assets/icons/google.png';
 import registerUser from '../../services/user-service/registerUser/registerUser';
 import { HandleRegisterFunctionProps } from '../../types/functions.types';
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
 
 const RegisterPage = () => {
 
@@ -20,6 +22,39 @@ const RegisterPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const registerGoogle = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      console.log(tokenResponse);
+      try {
+        const response = await axios.get("https://www.googleapis.com/oauth2/v2/userinfo", {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        });
+  
+        const userEmail = response.data.email;
+        
+        registerUser({
+          navigate: navigate,
+          setIsError: setIsError,
+          setIsSuccess: setIsSuccess,
+          setIsLoading: setIsLoading,
+          user: {
+            email: userEmail,
+            password: '1234'
+          }
+        });
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+      }
+    },
+    onError(errorResponse) {
+      setIsError(true);
+      console.log(errorResponse);
+      setTimeout(() => {
+        setIsError(false);
+      }, 5000);
+    },
+  });
   
   const yupValidationSchema = Yup.object({
     email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -53,6 +88,7 @@ const RegisterPage = () => {
 
   const handleGoogleAuth = () => {
     console.log('Google Authentication');
+    registerGoogle();
   }
 
   return (

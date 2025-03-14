@@ -13,6 +13,10 @@ import loginUser from '../../services/user-service/loginUser/loginUser';
 import { HandleLoginFunctionProps } from '../../types/functions.types';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import useAuthContext from '../../hooks/useAuthContext';
+import googleIcon from '../../assets/icons/google.png';
+import { useGoogleLogin } from '@react-oauth/google';
+import googleLogin from '../../services/user-service/googleLogin/googleLogin';
+import getUserInfoFromGoogle from '../../services/user-service/getUserInfoFromGoogle/getUserInfoFromGoogle';
 
 const LoginPage = () => {
 
@@ -23,6 +27,34 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  const loginGoogleAuth = useGoogleLogin({
+      onSuccess: async (tokenResponse) => {
+        console.log(tokenResponse);
+        if(tokenResponse) {
+          const email = await getUserInfoFromGoogle({
+            access_token: tokenResponse.access_token
+          });
+          console.log(email);
+          googleLogin({
+            navigate: navigate,
+            setIsError: setIsError,
+            setIsLoading: setIsLoading,
+            setIsSuccess: setIsSuccess,
+            setLocalStorageItem: setLocalStorageItem,
+            setToken: setToken,
+            email: email
+          });
+        }
+      },
+      onError(errorResponse) {
+        setIsError(true);
+        console.log(errorResponse);
+        setTimeout(() => {
+          setIsError(false);
+        }, 5000);
+      },
+  });
   
   const yupValidationSchema = Yup.object({
     email: Yup.string().email('Invalid email format').required('Email is required'),
@@ -55,6 +87,11 @@ const LoginPage = () => {
       formik.resetForm();
     },
   });
+
+  const handleGoogleAuth = () => {
+    console.log('Google Authentication');
+    loginGoogleAuth();
+  }
 
   return (
 
@@ -136,7 +173,16 @@ const LoginPage = () => {
             </div>
             <Button data-testid='loginBtn' type="submit" variant="contained" size="small" className='control-button'>Login</Button>
             <h6 className="questionText" data-testid='screensplit'>Didn't here before? <span><Link to='/register' data-testid='registernavlink'>Register</Link></span></h6>
+          
+            <hr className='separete-line'/>
+
+            <div className="google-btn" onClick={handleGoogleAuth}>
+              <img src={googleIcon} alt="google-auth-btn" className='google-icon'/>
+              <h5>Sign in with Google</h5>
+            </div>
+            
           </form>
+
         </div>
 
         <div className="left-footer">

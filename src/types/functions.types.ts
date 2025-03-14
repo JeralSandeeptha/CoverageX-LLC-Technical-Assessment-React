@@ -20,6 +20,16 @@ export type LoginUserFunctionProps = {
     setToken: Dispatch<SetStateAction<IToken | null>>
 }
 
+export type GoogleLoginUserFunctionProps = {
+    setIsLoading: Dispatch<SetStateAction<boolean>>,
+    setIsError: Dispatch<SetStateAction<boolean>>,
+    setIsSuccess: Dispatch<SetStateAction<boolean>>,
+    email: string,
+    navigate: NavigateFunction,
+    setLocalStorageItem: (itemName: string, itemData: unknown) => void,
+    setToken: Dispatch<SetStateAction<IToken | null>>
+}
+
 export type HandleLoginFunctionProps = { email: string, password: string };
 
 export type HandleRegisterFunctionProps = { email: string, password: string };
@@ -77,4 +87,8 @@ export type UpdateTaskFunctionProps = {
     setLocalStorageItem: (itemName: string, itemData: unknown) => void,
     getLocalStorageItem: (itemName: string) => void,
     clearLocalStorageItem: (itemName: string) => void
+}
+
+export type GetUserInfoFromGoogleProps = {
+    access_token: string
 }
