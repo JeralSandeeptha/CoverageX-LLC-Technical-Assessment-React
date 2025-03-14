@@ -32,6 +32,7 @@ const RegisterPage = () => {
         });
   
         const userEmail = response.data.email;
+        
         registerUser({
           navigate: navigate,
           setIsError: setIsError,
