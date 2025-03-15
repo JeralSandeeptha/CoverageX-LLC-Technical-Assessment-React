@@ -40,6 +40,7 @@ npm install -g typescript
 Create a .env file under the root folder.
 ```bash
 VITE_BASE_URL=http://localhost:3000/api/v1
+VITE_GOOGLE_CLIENT_ID=set_your_google_client_id
 ```
 
 # Available Scripts
